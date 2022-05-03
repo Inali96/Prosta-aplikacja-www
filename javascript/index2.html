@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+  <title>Kalkulatory</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src = "bmi.js" defer></script>
+  <script src = "tluszczu.js" defer></script>
+  <script src = "jquery.js" defer></script>
+  <link rel="stylesheet" href="newcss.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+</head>
+
+
+<body>
+
+<header>
+
+  <div class="overlay" id="flip4">
+    <h1>Kalkulatory</h1>
+  </div>
+
+</header>
+
+<div id="panel4">
+  <div id="flip">
+    <div class="login-box2" >
+      <form>
+        <div class="user-box2">
+          <a href="#"><span></span> <span></span> <span></span> <span></span> Kalkulator BMI </a><br><br><br>
+        </div>
+      </form>
+      <br> <br>
+    </div>
+  </div>
+  <div id="flip2">
+    <div class="login-box2" >
+      <form>
+        <div class="user-box2">
+          <a href="#"><span></span> <span></span> <span></span> <span></span> Kalkulator tłuszczu w ciele </a><br><br><br>
+        </div>
+      </form>
+      <br> <br>
+    </div>
+  </div>
+  <div id="flip3">
+    <div class="login-box2" >
+      <form>
+        <div class="user-box2">
+          <a href="#"><span></span> <span></span> <span></span> <span></span> Kalkulator kalorii </a><br><br><br>
+        </div>
+      </form>
+      <br> <br>
+    </div>
+  </div>
+
+    <div class="login-box2" id="wyloguj" >
+      <form action="wyloguj.php" id="myform3">
+        <div class="user-box2">
+          <a href="#" onclick="document.getElementById('myform3').submit()"><span></span> <span></span> <span></span> <span></span> Wyloguj </a><br><br><br>
+        </div>
+      </form>
+      <br> <br>
+    </div>
+  </div>
+
+
+<div id="panel" class="login-box" style="top:55%" >
+  <form name="formularz">
+    <div class="user-box">
+      <h2 style="color: #008c19; text-align: center"> Kalkulator BMI</h2>
+      Twoja waga(kg)<input type="text" name="waga" size="10" style="border-bottom-color: red; text-align: center;"><br />
+      Twój wzrost(cm)<input type="text" name="wzrost" size="10" style="border-bottom-color: red; text-align: center;"><br />
+    </div>
+    <a  onClick="obliczanieBMI()"><span></span> <span></span> <span></span> <span></span> Oblicz swoje BMI </a><br><br><br>
+    <div class="user-box">
+      Twoje BMI <input type="text" name="bmi" size="10" style="border-bottom: none; text-align: center;""><br />
+      Oznacza to, że <input type="text" name="znaczenie" size="25" style="border-bottom: none; text-align: center;"><br />
+    </div>
+    <a  ><span></span> <span></span> <span></span> <span></span> Wyczyść </a>
+  </form>
+  <br> <br>
+
+</div>
+
+
+<div id="panel3" class="login-box" style="top:55%">
+  <h2 style="color: #008c19; text-align: center">Kalkulator kalorii</h2>
+    <div class="user-box">
+
+      <label style="float: left; padding-left: 100px;">Kobieta
+        <input id="female" type="radio" name="gender" ></br>
+      </label>
+      <label style="float: right; padding-right: 100px;">Mężczyzna
+        <input id="male" type="radio" name="gender" checked></br>
+      </label>
+      
+       <br><br><br> <br><label style="padding-left: 170px;">Wiek
+        <input id="age2" type="number"  value="35" style="border-bottom-color: red; text-align: center;"></br>
+      </label>
+      <label style="padding-left: 150px;">Wzrost [cm]
+        <input id="height2" type="number"  value="168" style="border-bottom-color: red; text-align: center;"></br>
+      </label>
+      <label style="padding-left: 150px;">Waga [kg]
+        <input id="weight2" type="number"  value="55" style="border-bottom-color: red; text-align: center;"></br>
+      </label>
+<form>
+      <a  onClick="calsPerDay()"><span></span> <span></span> <span></span> <span></span> Oblicz </a>
+      <a  onClick="reset2()"><span></span> <span></span> <span></span> <span></span> Wyczyść </a><br><br><br>
+</form>
+      <label>
+        Twoje dzienne zapotrzebowanie na kalorie to [kcal/dzien] : <span id="totalCals"></span>
+      </label>
+    </div>
+</div>
+
+
+<div id="panel2" class="login-box" style="top:10%" >
+    <div class="user-box" >
+      <h2 style="color: #008c19; text-align: center">Kalkulator tłuszczu w ciele</h2>
+
+      <label style="padding-left: 150px;">Pas [cm]
+        <input id="waist3" type="number"  value="60" style="border-bottom-color: red; text-align: center;"></br>
+      </label>
+      <label style="padding-left: 150px;">Waga [kg]
+        <input id="weight3" type="number"  value="60" style="border-bottom-color: red; text-align: center;"></br>
+      </label>
+
+      <label  style="float: left; padding-left: 100px;">Kobieta
+        <input id="female3" type="radio" name="gender" ></br>
+      </label>
+      <label  style="float: right; padding-right: 100px;">Mężczyzna
+        <input id="male3" type="radio" name="gender"  checked></br>
+      </label>
+<form>
+      <a  onClick="tluszczu()"><span></span> <span></span> <span></span> <span></span> Oblicz </a>
+      <a  onClick="reset3()"><span></span> <span></span> <span></span> <span></span> Wyczyść </a><br><br>
+</form>
+<label>
+     Twoja zawartość tkanki tłuszczowej to [%] : <span id="wynik"></span>
+</label>
+      </div>
+</div>
+
+
+
+
+
+
+<div class="login-box" id="menu">
+  <form>
+    <div class="user-box">
+    <a href="#"><span></span> <span></span> <span></span> <span></span> Dostępne kalkulatory </a><br><br><br>
+    </div>
+  </form>
+  <br> <br>
+
+</div>
+</body>
+</html>
